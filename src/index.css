@@ -80,14 +80,26 @@
   --chart-3: oklch(0.398 0.07 227.392);
   --chart-4: oklch(0.828 0.189 84.429);
   --chart-5: oklch(0.769 0.188 70.08);
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.205 0 0);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
+  /* Sidebar Theme - BANYAN Custom */
+  --sidebar: #faecc3;
+  /* cream (background) */
+  --sidebar-foreground: #2e1b1a;
+  /* merlot (text) */
+
+  --sidebar-primary: #4b2e2b;
+  /* maroon (active/hover) */
+  --sidebar-primary-foreground: #f3efe8;
+  /* beige (text on maroon) */
+
+  --sidebar-accent: #c49b63;
+  /* gold (highlight/accent) */
+  --sidebar-accent-foreground: #2e1b1a;
+  /* dark text for gold areas */
+
+  --sidebar-border: #bba591;
+  /* tan (subtle divider) */
+  --sidebar-ring: #4b2e2b;
+  /* maroon (focus ring) */
 }
 
 /* .dark {
@@ -132,4 +144,15 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+.dark {
+  --sidebar: hsl(240 5.9% 10%);
+  --sidebar-foreground: hsl(240 4.8% 95.9%);
+  --sidebar-primary: hsl(224.3 76.3% 48%);
+  --sidebar-primary-foreground: hsl(0 0% 100%);
+  --sidebar-accent: hsl(240 3.7% 15.9%);
+  --sidebar-accent-foreground: hsl(240 4.8% 95.9%);
+  --sidebar-border: hsl(240 3.7% 15.9%);
+  --sidebar-ring: hsl(217.2 91.2% 59.8%);
 }
