@@ -6,14 +6,27 @@ import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { Eye, EyeOff } from "lucide-react";
 import GoogleLoginButton from "./components/GoogleLoginButton";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import useAuth from "@/hooks/useAuth";
 
 export default function Register() {
-    const { register, handleSubmit, watch, formState: { errors } } = useForm();
+    const { register, handleSubmit, formState: { errors } } = useForm();
     const [showPassword, setShowPassword] = useState(false);
-    const [showConfirm, setShowConfirm] = useState(false);
+    const { createUser } = useAuth();
+    const navigate = useNavigate()
 
-    const onSubmit = (data) => console.log("Register Data:", data);
+    const onSubmit = async (data) => {
+        console.log(data);
+
+        try {
+            const result = await createUser(data?.email, data?.password)
+            console.log(result)
+            if (result?.user) return navigate('/')
+        } catch (err) {
+            console.log(err);
+        }
+
+    };
 
     return (
         <div className="flex min-h-screen items-center justify-center bg-background px-4">

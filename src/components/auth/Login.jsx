@@ -6,13 +6,28 @@ import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { Eye, EyeOff } from "lucide-react";
 import GoogleLoginButton from "./components/GoogleLoginButton";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import useAuth from "@/hooks/useAuth";
 
 export default function Login() {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const [showPassword, setShowPassword] = useState(false);
+    const { loginUser } = useAuth()
+    const navigate = useNavigate();
 
-    const onSubmit = (data) => console.log("Login Data:", data);
+    const onSubmit = async (data) => {
+        const { email, password } = data || {};
+
+        try {
+            const result = await loginUser(email, password)
+            if (result?.user) {
+                console.log(result.user);
+                navigate('/')
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    };
 
     return (
         <div className="flex min-h-screen items-center justify-center bg-background px-4">
@@ -69,7 +84,7 @@ export default function Login() {
                     <GoogleLoginButton />
                     <p className="text-foreground">
                         Don’t have an account?{" "}
-                        <Link  to={'/register'} className="text-primary hover:underline">Sign up</Link>
+                        <Link to={'/register'} className="text-primary hover:underline">Sign up</Link>
                     </p>
                     <a href="#" className="text-accent hover:underline">Forgot password?</a>
                 </CardFooter>

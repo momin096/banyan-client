@@ -1,4 +1,4 @@
-import { ChartBarStacked, Home, SquareMousePointer, UserRoundCog, SquareRoundCorner, Settings,CopyPlus,Cog   } from "lucide-react"
+import { ChartBarStacked, Home, SquareMousePointer, UserRoundCog, SquareRoundCorner, Settings, CopyPlus, Cog } from "lucide-react"
 import { useEffect } from "react"
 import {
     Sidebar,
@@ -12,7 +12,7 @@ import {
 } from "@/components/ui/sidebar"
 import { Link, useLocation } from "react-router-dom"
 
-// Menu items.
+
 const items = [
     {
         title: "Analytics",
@@ -43,12 +43,12 @@ const items = [
     {
         title: "Add Product",
         url: "/admin/add-product",
-        icon: CopyPlus ,
+        icon: CopyPlus,
     },
     {
         title: "Manage Products",
         url: "/admin/manage-products",
-        icon: Cog  ,
+        icon: Cog,
     },
     {
         title: "Settings",
@@ -73,7 +73,9 @@ export function AppSidebar({ setTopBar }) {
             <SidebarContent>
                 <SidebarGroup>
                     <SidebarGroupLabel className={'h-14 flex flex-col gap-2 justify-center mb-3 md:mb-8'}>
-                        <img className="h-auto w-10" src="/BY Gray.svg" alt="" />
+                        <Link to={'/'}>
+                            <img className="h-auto w-10" src="/BY Gray.svg" alt="" />
+                        </Link>
                         <h2 className="font-bold text-lg ">ADMIN PANEL</h2>
                     </SidebarGroupLabel>
                     <SidebarGroupContent>

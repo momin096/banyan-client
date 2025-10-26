@@ -1,8 +1,18 @@
 import { Button } from '@/components/ui/button';
+import useAuth from '@/hooks/useAuth';
+import { useNavigate } from 'react-router-dom';
 
 const GoogleLoginButton = () => {
-    const handleGoogleLogin = () => { 
-        // console.log(object);
+    const { google } = useAuth();
+    const navigate = useNavigate();
+    const handleGoogleLogin = async () => {
+        try {
+            const result = await google()
+            console.log(result);
+            if (result?.user) return navigate('/')
+        } catch (err) {
+            console.log(err);
+        }
     }
     return (
         <>
